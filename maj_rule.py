@@ -30,7 +30,7 @@ plt.imshow(Field)
 
 Value = [0, 0, 0, 0, 1, 0, 1, 1, 1, 1]
 
-T = 100
+T = 50
 
 dim = len(Field)
 
