@@ -1,6 +1,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+N, T = 39, 10
+
+Field = []
+for i in range(N):
+    if not N % 2:
+        Field.append([1, 0] * (N // 2))
+    else:
+        Field.append([1, 0] * (N // 2) + [1])
+
+for i in range(N // 3):
+    for j in range(len(Field)):    
+        Field[j][(3*i + 1) % len(Field)] = 0
+
+print(*Field, sep = "\n")
+
 def SumF (Field):
     s = 0
     for i in range(len(Field)):
@@ -16,29 +31,6 @@ def Sum (Field, i, j):
             s += Field[(i + k) % len(Field)][(j + l) % len(Field)] 
     return s
 
-N, D, T = 256, 16, 100
-
-
-Field = []
-
-# Random filling
-# for i in range(N):
-    # Field.append(np.random.randint(2, size = N))
-
-# Chess coloring
-Field = []
-for i in range(N):
-    if (i % 2):
-        Field.append([0, 1] * (N//2))
-    else:
-        Field.append([1, 0] * (N//2))
-
-# Adding defect
-for i in range(D):
-    for j in range(D):
-        if i != 0 and j != 0:
-            Field[D * i][D * j] = 0
-            Field[D*i - 1][D * j] = 0
 print(SumF(Field) / N**2)
 print('\n')
 
